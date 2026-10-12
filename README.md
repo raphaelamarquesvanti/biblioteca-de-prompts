@@ -232,3 +232,35 @@ Projeto acadêmico em desenvolvimento, com foco na implementação de um MVP de 
 ## 📄 Licença
 
 Nenhuma licença foi definida neste momento. Consulte o responsável pelo repositório antes de reutilizar ou redistribuir o código.
+
+### ⚡ Inicialização rápida no Windows
+
+Para facilitar a execução da Biblioteca de Prompts, o projeto pode ser iniciado por meio do arquivo `iniciar.bat`. Com ele, não é necessário ativar manualmente o ambiente virtual nem digitar o comando de inicialização a cada utilização.
+
+#### Como utilizar
+
+1. Certifique-se de que o projeto foi instalado conforme as instruções anteriores.
+2. Na pasta principal do projeto, crie um arquivo chamado `iniciar.bat`.
+3. Copie o conteúdo abaixo para o arquivo:
+
+```bat
+@echo off
+cd /d "%~dp0"
+call ".venv\Scripts\activate.bat"
+python app.py
+pause
+```
+
+4. Salve o arquivo.
+5. Dê dois cliques em `iniciar.bat` para iniciar a aplicação.
+6. Aguarde o servidor iniciar e abra o navegador no endereço:
+
+http://127.0.0.1:5000
+
+O terminal permanecerá aberto enquanto a aplicação estiver em execução. Para encerrá-la, volte à janela do terminal e pressione `Ctrl + C`.
+
+**Observações:**
+- O arquivo `iniciar.bat` deve ficar na mesma pasta que `app.py`.
+- O ambiente virtual `.venv` e as dependências precisam estar configurados previamente.
+- Esse método é destinado ao Windows. Em outros sistemas operacionais, utilize os comandos de execução apresentados anteriormente.
+
