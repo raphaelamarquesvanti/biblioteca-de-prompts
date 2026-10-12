@@ -220,6 +220,9 @@ def inicio():
     )
 
 
+# Inicializa o banco de dados também quando a aplicação
+# é carregada pelo Gunicorn no Render.
+criar_banco()
+
 if __name__ == "__main__":
-    criar_banco()
     app.run(debug=True)
