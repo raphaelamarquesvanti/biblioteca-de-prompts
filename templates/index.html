@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Prompts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topo">
+        <a class="marca" href="/">Biblioteca<span> de Prompts</span></a>
+        <span class="etiqueta">Inteligência Artificial</span>
+    </header>
+
+    <main class="container">
+        <section class="apresentacao">
+            <p class="sobretitulo">SUA IDEIA, COM MAIS POSSIBILIDADES</p>
+            <h1>Encontre o prompt<br>ideal para você.</h1>
+            <p class="subtitulo">
+                Comandos prontos para estudar, trabalhar e criar.
+                Pesquise, personalize e copie.
+            </p>
+
+            <form action="/" method="get" class="busca">
+                <input
+                    type="search"
+                    name="q"
+                    placeholder="Ex.: Instagram, estudos, currículo..."
+                    value="{{ busca }}"
+                    aria-label="Pesquisar prompts"
+                >
+                {% if categoria_selecionada %}
+                    <input type="hidden" name="categoria"
+                           value="{{ categoria_selecionada }}">
+                {% endif %}
+                <button type="submit">Pesquisar</button>
+            </form>
+        </section>
+
+        <section class="biblioteca">
+            <div class="cabecalho-lista">
+                <div>
+                    <h2>Explore a biblioteca</h2>
+                    <p>{{ prompts|length }} prompt(s) encontrado(s)</p>
+                </div>
+                <a class="limpar" href="/">Limpar filtros</a>
+            </div>
+
+            <nav class="categorias" aria-label="Categorias">
+                <a class="categoria {% if not categoria_selecionada %}ativa{% endif %}"
+                   href="/{% if busca %}?q={{ busca|urlencode }}{% endif %}">
+                    Todas
+                </a>
+                {% for categoria in categorias %}
+                    <a class="categoria {% if categoria_selecionada == categoria %}ativa{% endif %}"
+                       href="/?categoria={{ categoria|urlencode }}{% if busca %}&q={{ busca|urlencode }}{% endif %}">
+                        {{ categoria }}
+                    </a>
+                {% endfor %}
+            </nav>
+
+            <div class="grade">
+                {% for prompt in prompts %}
+                    <article class="cartao">
+                        <span class="tag">{{ prompt.categoria }}</span>
+                        <h3>{{ prompt.titulo }}</h3>
+                        <p class="descricao">{{ prompt.descricao }}</p>
+
+                        <details>
+                            <summary>Visualizar prompt</summary>
+                            <p class="conteudo">{{ prompt.conteudo }}</p>
+                        </details>
+
+                        <button
+                            class="botao-copiar"
+                            type="button"
+                            data-prompt="{{ prompt.conteudo }}"
+                        >Copiar prompt</button>
+                    </article>
+                {% else %}
+                    <div class="vazio">
+                        <h3>Nenhum prompt encontrado</h3>
+                        <p>Tente outra palavra ou escolha uma categoria diferente.</p>
+                        <a href="/">Ver todos os prompts</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Biblioteca de Prompts · Projeto acadêmico · 2026</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll(".botao-copiar").forEach((botao) => {
+            botao.addEventListener("click", async () => {
+                try {
+                    await navigator.clipboard.writeText(botao.dataset.prompt);
+                    botao.textContent = "Copiado!";
+                } catch (erro) {
+                    alert("Não foi possível copiar. Abra o prompt e copie o texto manualmente.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

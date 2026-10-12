@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área administrativa | Biblioteca de Prompts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topo">
+        <a class="marca" href="/">Biblioteca<span> de Prompts</span></a>
+        <span class="etiqueta">Área administrativa</span>
+    </header>
+
+    <main class="container">
+        <section class="apresentacao">
+            <p class="sobretitulo">GERENCIAMENTO DA BIBLIOTECA</p>
+            <h1>Cadastrar novo prompt</h1>
+
+            <a href="{{ url_for('logout') }}">Sair da administração</a>
+
+
+            <p class="subtitulo">
+                Preencha os campos abaixo para adicionar um prompt à biblioteca.
+            </p>
+        </section>
+
+        <section class="cartao">
+            <form action="/admin/cadastrar" method="post" class="form-admin">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <label for="titulo">Título do prompt</label>
+                <input
+                    type="text"
+                    id="titulo"
+                    name="titulo"
+                    maxlength="120"
+                    required
+                    placeholder="Ex.: Ideias de conteúdo para Instagram"
+                >
+
+                <label for="categoria">Categoria</label>
+                <input
+                    type="text"
+                    id="categoria"
+                    name="categoria"
+                    maxlength="60"
+                    required
+                    placeholder="Ex.: Marketing, Estudos, Carreira"
+                >
+
+                <label for="descricao">Descrição</label>
+                <textarea
+                    id="descricao"
+                    name="descricao"
+                    maxlength="300"
+                    rows="3"
+                    required
+                    placeholder="Explique brevemente para que serve este prompt."
+                ></textarea>
+
+                <label for="conteudo">Conteúdo completo do prompt</label>
+                <textarea
+                    id="conteudo"
+                    name="conteudo"
+                    rows="8"
+                    required
+                    placeholder="Escreva aqui as instruções completas do prompt."
+                ></textarea>
+
+                <button type="submit" class="botao-copiar">
+                    Cadastrar prompt
+                </button>
+
+                <a class="limpar" href="/">Voltar para a biblioteca</a>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Biblioteca de Prompts · Área administrativa</p>
+    </footer>
+</body>
+</html>

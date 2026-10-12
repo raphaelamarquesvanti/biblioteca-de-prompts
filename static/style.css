@@ -1,0 +1,262 @@
+:root {
+    --roxo: #C2286B;
+    --roxo-escuro: #333038;
+    --fundo: #FFF7FA;
+    --texto: #333038;
+    --suave: #77717A;
+    --borda: #F0DCE5;
+    --branco: #FFFFFF;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.topo {
+    min-height: 76px;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--branco);
+    border-bottom: 1px solid var(--borda);
+}
+
+.marca {
+    color: var(--roxo-escuro);
+    font-size: 21px;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.marca span {
+    color: var(--roxo);
+}
+
+.etiqueta, .tag {
+    color: var(--roxo);
+    background: #eee7fb;
+    border-radius: 30px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.container {
+    width: min(1080px, 88%);
+    margin: 0 auto;
+}
+
+.apresentacao {
+    padding: 76px 0 55px;
+    text-align: center;
+}
+
+.sobretitulo {
+    color: var(--roxo);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin: 18px 0;
+    color: var(--roxo-escuro);
+    font-size: clamp(36px, 6vw, 58px);
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+}
+
+.subtitulo {
+    color: var(--suave);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.busca {
+    display: flex;
+    gap: 10px;
+    max-width: 680px;
+    margin: 30px auto 0;
+    padding: 8px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    box-shadow: 0 8px 30px #28164b0a;
+}
+
+.busca input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+}
+
+button {
+    cursor: pointer;
+    font: inherit;
+}
+
+.busca button, .botao-copiar {
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 9px;
+    color: white;
+    background: var(--roxo);
+    font-weight: 650;
+}
+
+.biblioteca {
+    padding: 10px 0 65px;
+}
+
+.cabecalho-lista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.cabecalho-lista h2 {
+    margin-bottom: 5px;
+    color: var(--roxo-escuro);
+}
+
+.cabecalho-lista p, .descricao {
+    color: var(--suave);
+    font-size: 14px;
+}
+
+.limpar, .vazio a {
+    color: var(--roxo);
+    font-size: 13px;
+}
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.categoria {
+    padding: 9px 15px;
+    border: 1px solid var(--borda);
+    border-radius: 25px;
+    color: var(--suave);
+    background: var(--branco);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.categoria.ativa {
+    color: white;
+    background: var(--roxo);
+    border-color: var(--roxo);
+}
+
+.grade {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.cartao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #28164b06;
+}
+
+.cartao h3 {
+    margin: 22px 0 0;
+    color: var(--roxo-escuro);
+}
+
+.descricao {
+    line-height: 1.6;
+}
+
+details {
+    width: 100%;
+    margin: 10px 0 20px;
+    font-size: 14px;
+}
+
+summary {
+    color: var(--roxo);
+    cursor: pointer;
+    font-weight: 650;
+}
+
+.conteudo {
+    padding: 14px;
+    background: var(--fundo);
+    border-radius: 8px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.botao-copiar {
+    margin-top: auto;
+}
+
+.vazio {
+    grid-column: 1 / -1;
+    padding: 35px;
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+}
+
+footer {
+    padding: 25px;
+    border-top: 1px solid var(--borda);
+    color: var(--suave);
+    text-align: center;
+    font-size: 12px;
+}
+
+@media (max-width: 650px) {
+    .topo {
+        padding: 16px 5%;
+    }
+
+    .etiqueta {
+        display: none;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .apresentacao {
+        padding-top: 48px;
+    }
+
+    .busca {
+        flex-direction: column;
+    }
+
+    .grade {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecalho-lista {
+        align-items: flex-start;
+    }
+}
