@@ -7,6 +7,9 @@ on:
 jobs:
   testes:
     runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: "chave-temporaria-apenas-para-testes"
+      ADMIN_PASSWORD: "senha-temporaria-apenas-para-testes"
 
     steps:
       - name: Baixar o codigo
@@ -21,6 +24,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flask flask-wtf python-dotenv pytest pytest-cov
+
+      - name: Preparar banco para testes
+        run: python -c "import app; app.criar_banco()"
 
       - name: Executar testes
         run: python -m pytest --cov=app --cov-report=term
