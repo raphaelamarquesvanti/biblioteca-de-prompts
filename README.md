@@ -4,6 +4,20 @@ Uma aplicação web para pesquisar, consultar e copiar prompts de inteligência 
 
 O objetivo é facilitar o acesso a prompts úteis, especialmente para estudantes, criadores de conteúdo e pessoas que estão começando a utilizar ferramentas de inteligência artificial.
 
+---
+
+## 🖥️ Demonstração da aplicação
+
+### Tela principal — Biblioteca de Prompts
+
+![Tela do site de prompt](Tela%20do%20site%20de%20prompt.png)
+
+### Filtro por categoria — Marketing
+
+![Filtro de Marketing](Filto%20Marketing.png)
+
+
+
 ## ✨ Funcionalidades
 
 - **Pesquisa de prompts:** encontre prompts por meio de uma busca.
